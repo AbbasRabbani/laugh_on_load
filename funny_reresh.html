@@ -1,0 +1,52 @@
+<!-- inner HTML is used to popular  adiv in HTML. Search online about this method and create a website with a div tag combining a random joke given
+in an array of jokes. Use math.random and fetch jokes from the internet (use any website ti create an array ) your website should show new joke in 
+every reload. Max lenght of arrray should be 10 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Random Joke Generator</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2em;
+      background-color: #f0f0f0;
+    }
+
+    #joke {
+      background-color: #fff;
+      padding: 1em;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+      max-width: 600px;
+      margin: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Have a Random Joke and laugh</h1>
+  <div id="joke">Loading the joke .... </div>
+
+  <script>
+    fetch('https://official-joke-api.appspot.com/jokes/ten')
+      .then(response => response.json())
+      .then(jokes => {
+        const randomIndex = Math.floor(Math.random() * jokes.length);
+        const joke = jokes[randomIndex];
+        document.getElementById('joke').innerHTML = `
+      <p> <strong> ${joke.setup}</strong></p>
+      <p>${joke.punchline}</p>
+      `;
+      })
+      .catch(error => {
+        document.getElementById('joke').innerHTML = 'Failed to load. Please try again.';
+        console.error('Error fetching jokes:', error);
+      });
+  </script>
+</body>
+
+</html>
