@@ -30,3 +30,6 @@ Built using **HTML, JavaScript, and the Official Joke API**, this project is per
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/laugh_on_load.git
+
+2. cd laugh_on_load
+3. open index.html   # Mac and start index.html  # Windows
